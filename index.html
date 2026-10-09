@@ -53,8 +53,8 @@
       <button class="play" id="play" aria-label="再生" title="再生">▶</button>
       <button id="next" aria-label="次の曲" title="次の曲">▶|</button>
     </div>
-    <p class="hint" id="hint">音源を追加すると、ここで再生できます。<br>まずは assets/song.mp3 を用意してください。</p>
-    <audio id="audio" preload="metadata" src="assets/song.mp3"></audio>
+    <p class="hint" id="hint">音源を追加すると、ここで再生できます。<br>まずは assets/song.m4a を用意してください。</p>
+    <audio id="audio" preload="metadata" src="assets/song.m4a"></audio>
   </main>
 <script>
 const audio = document.getElementById('audio');
@@ -78,12 +78,12 @@ audio.addEventListener('pause', () => { play.textContent = '▶'; play.setAttrib
 audio.addEventListener('ended', () => { play.textContent = '▶'; });
 play.addEventListener('click', async () => {
   if (!audio.querySelector('source') && audio.error) {
-    hint.textContent = '音源ファイルがまだありません。assets/song.mp3 に音源を追加してください。';
+    hint.textContent = '音源ファイルがまだありません。assets/song.m4a に音源を追加してください。';
     return;
   }
   if (audio.paused) {
     try { await audio.play(); }
-    catch { hint.textContent = '音源が見つからないか、再生できません。assets/song.mp3 を確認してください。'; }
+    catch { hint.textContent = '音源が見つからないか、再生できません。assets/song.m4a を確認してください。'; }
   } else audio.pause();
 });
 seek.addEventListener('input', () => {
@@ -91,7 +91,7 @@ seek.addEventListener('input', () => {
 });
 document.getElementById('prev').addEventListener('click', () => { audio.currentTime = 0; });
 document.getElementById('next').addEventListener('click', () => { audio.currentTime = 0; });
-audio.addEventListener('error', () => { hint.textContent = '音源ファイルが未設定です。assets/song.mp3 に音源を入れると再生できます。'; });
+audio.addEventListener('error', () => { hint.textContent = '音源ファイルが未設定です。assets/song.m4a に音源を入れると再生できます。'; });
 </script>
 </body>
 </html>
